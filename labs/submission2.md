@@ -287,3 +287,7 @@ Changes not staged for commit:
 - `git switch`: branch operations only. Safe and explicit.  
 - `git restore`: file restoration only. Explicit and clear.  
 - `git checkout`: legacy, can do both branch switching and file restoration, confusing.
+
+# Bonus — GitHub Social Interactions
+
+Stars and follows help highlight valuable projects, allow tracking of updates from contributors, and support collaboration by showing interest and engagement in the open-source community.
