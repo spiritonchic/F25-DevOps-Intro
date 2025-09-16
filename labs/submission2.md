@@ -193,3 +193,97 @@ git show v1.0.0
 **Note on Tags:**
 Tags mark specific points in history as releases, useful for versioning, triggering CI/CD pipelines, and keeping track of release notes.
 
+# Task 5 — git switch vs git checkout vs git restore
+
+**1. Branch switching with git switch:**
+```bash
+git switch -c cmd-compare   # create and switch
+git branch
+git switch -                # toggle back to previous branch
+```
+
+**Git branch output:**
+```
+* cmd-compare
+  feature/lab1
+  feature/lab2
+  git-reset-practice
+  main
+  side-branch
+```
+
+**2. Legacy git checkout:**
+```bash
+git checkout -b cmd-compare-2  # create and switch
+git branch
+```
+
+**Git branch output:**
+```
+  cmd-compare
+* cmd-compare-2
+  feature/lab1
+  feature/lab2
+  git-reset-practice
+  main
+  side-branch
+```
+
+**3. Restoring files with git restore:**
+```bash
+git add demo.txt
+echo "scratch" >> demo.txt
+git status
+git restore demo.txt                 # discard working tree changes
+git status
+git restore --staged demo.txt        # unstage but keep working tree
+git status
+git add demo.txt
+git restore --source=HEAD~1 demo.txt # restore from another commit
+git status
+```
+
+**Git status 1 output:**
+```
+On branch cmd-compare-2
+Changes to be committed:
+        new file:   demo.txt
+
+Changes not staged for commit:
+        modified:   demo.txt
+```
+
+
+**Git status 2 output:**
+```
+On branch cmd-compare-2
+Changes to be committed:
+        new file:   demo.txt
+
+```
+
+
+**Git status 3 output:**
+```
+On branch cmd-compare-2
+Untracked files:
+        demo.txt
+
+```
+
+
+**Git status 4 output:**
+```
+On branch cmd-compare-2
+Changes to be committed:
+        new file:   demo.txt
+
+Changes not staged for commit:
+        deleted:    demo.txt
+
+```
+
+**Summary:**  
+- `git switch`: branch operations only. Safe and explicit.  
+- `git restore`: file restoration only. Explicit and clear.  
+- `git checkout`: legacy, can do both branch switching and file restoration, confusing.
