@@ -61,3 +61,73 @@ feat: add text.txt
 
 **Description:**  
 A commit is an object that points to a tree (the state of files), references a parent commit, and stores author, committer, and message information. In this case, the commit records the addition of text.txt to the repository.
+
+# Task 2 — Reset and Reflog Recovery
+
+**Objective:** Practice using `git reset` variants and `git reflog` to navigate history.
+
+**Commands run:**
+```
+git switch -c git-reset-practice
+echo "First commit" > file.txt && git add file.txt && git commit -m "First commit"
+echo "Second commit" >> file.txt && git add file.txt && git commit -m "Second commit"
+echo "Third commit"  >> file.txt && git add file.txt && git commit -m "Third commit"
+
+git log --oneline 
+
+git reset --soft HEAD~1   # move HEAD; keep index & working tree
+
+git log --oneline 
+
+git reset --hard HEAD~1   # move HEAD; discard index & working tree
+
+git log --oneline 
+
+git reflog                # view HEAD movement
+
+git reset --hard 9c83b89 # recover a previous state
+
+git log --oneline
+
+git reflog
+```
+
+**Git log snippets:**
+
+1. After three commits:
+```
+3472c49 (HEAD -> git-reset-practice) Third commit
+9c83b89 Second commit
+92c642f First commit
+```
+
+2. After `git reset --soft HEAD~1`:
+```
+9c83b89 (HEAD -> git-reset-practice) Second commit
+92c642f First commit
+```
+- Working tree: unchanged, staged changes from `Third commit` remain.  
+
+3. After `git reset --hard HEAD~1`:
+```
+92c642f (HEAD -> git-reset-practice) First commit
+```
+- Working tree and index: cleared.
+
+4. After `git reset --hard 9c83b89`:
+```
+9c83b89 (HEAD -> git-reset-practice) Second commit
+92c642f First commit
+```
+- Working tree and index: cleared.  
+
+**Reflog snippet:**
+```
+9c83b89 (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to 9c83b89
+92c642f HEAD@{1}: reset: moving to HEAD~1
+9c83b89 (HEAD -> git-reset-practice) HEAD@{2}: reset: moving to HEAD~1
+3472c49 HEAD@{3}: commit: Third commit
+9c83b89 (HEAD -> git-reset-practice) HEAD@{4}: commit: Second commit
+92c642f HEAD@{5}: commit: First commit
+```
+
