@@ -176,3 +176,20 @@ git reflog
 
 **Reflection:**
 The graph visually shows the branching structure, including where side branches diverge from main development. This makes it easier to understand which commits belong to which branch and how changes flow between them.
+
+# Task 4 — Tagging Commits
+
+**Commands Used:**
+```
+git tag v1.0.0
+git push origin v1.0.0
+git show v1.0.0
+```
+
+**Tag Names and Associated Commits:**
+- Tag: `v1.0.0`
+- Commit Hash: `ac042771fe1f4cb23d279f3bb996d0ceb3e7f155`
+
+**Note on Tags:**
+Tags mark specific points in history as releases, useful for versioning, triggering CI/CD pipelines, and keeping track of release notes.
+
