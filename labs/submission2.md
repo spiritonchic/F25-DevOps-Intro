@@ -131,3 +131,48 @@ git reflog
 92c642f HEAD@{5}: commit: First commit
 ```
 
+# Task 3 — Visualize Commit History
+
+**Graph Snippet:**
+```
+* 1fe42e5 (side-branch) Side branch commit
+| * 6a9df4e (origin/feature/lab2, feature/lab2) docs: Task2
+| * bc13571 docs: add lab2 submission
+| * 36475b2 delete text.txt
+| * a258a2f feat: add text.txt
+|/
+| * 9c83b89 (git-reset-practice) Second commit
+| * 92c642f First commit
+|/
+* fe7b415 (HEAD -> main, origin/main, origin/HEAD) docs: add PR template
+| * 0c38e2d (origin/feature/lab1, feature/lab1) docs: add lab1 submission stub
+| * ad8e7db docs: add commit signing summary
+|/
+* 3f80c83 feat: publish lec2
+* 499f2ba feat: publish lab2
+* af0da89 feat: update lab1
+* 74a8c27 Publish lab1
+* f0485c0 Publish lec1
+* 31dd11b Publish README.md
+```
+
+**Commit Messages List:**
+- First commit  
+- Second commit   
+- feat: add text.txt  
+- delete text.txt  
+- docs: add lab2 submission  
+- docs: Task2  
+- Side branch commit  
+- docs: add PR template  
+- docs: add lab1 submission stub  
+- docs: add commit signing summary  
+- feat: publish lec2  
+- feat: publish lab2  
+- feat: update lab1  
+- Publish lab1  
+- Publish lec1  
+- Publish README.md  
+
+**Reflection:**
+The graph visually shows the branching structure, including where side branches diverge from main development. This makes it easier to understand which commits belong to which branch and how changes flow between them.
